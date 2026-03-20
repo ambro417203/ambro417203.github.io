@@ -1,1 +1,214 @@
-Hello World!
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Ambroziewicz — Portfolio</title>
+    <meta name="description" content="Portfolio — projekty, umiejętności i doświadczenie">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Custom cursor -->
+    <div id="custom-cursor"></div>
+
+    <!-- ═══════════ NAVBAR ═══════════ -->
+    <nav id="navbar">
+        <div id="nav-logo-slot"></div>
+        <ul id="nav-links">
+            <li><a href="#about">O mnie</a></li>
+            <li><a href="#projects">Projekty</a></li>
+            <li><a href="#skills">Umiejętności</a></li>
+            <li><a href="#experience">Doświadczenie</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <section id="hero">
+        <div id="animation-container">
+            <svg id="base-svg" viewBox="0 0 1681.94 150.15" preserveAspectRatio="xMidYMid meet">
+                <path id="logo-path" class="base-path" d="M128.31,38.01v108.99H51.66c-7.14,0-13.86-1.37-20.16-4.09-6.3-2.73-11.76-6.41-16.38-11.03-4.62-4.62-8.3-10.08-11.03-16.38S0,102.48,0,95.34v-5.67c0-7.14,1.36-13.86,4.09-20.16,2.73-6.3,6.41-11.76,11.03-16.38,4.62-4.62,10.08-8.29,16.38-11.02,6.3-2.73,13.02-4.1,20.16-4.1h76.65ZM99.54,66.78h-47.88c-3.08,0-6.02.6-8.82,1.79-2.8,1.19-5.25,2.83-7.35,4.94-2.1,2.1-3.75,4.52-4.94,7.24-1.19,2.73-1.78,5.71-1.78,8.92v5.67c0,3.08.59,6.02,1.78,8.82,1.19,2.8,2.84,5.25,4.94,7.35,2.1,2.1,4.55,3.75,7.35,4.94,2.8,1.19,5.74,1.79,8.82,1.79h47.88v-51.45ZM153.89,147v-57.33c0-7.14,1.36-13.86,4.09-20.16,2.73-6.3,6.41-11.76,11.03-16.38,4.62-4.62,10.08-8.29,16.38-11.02,6.3-2.73,13.02-4.1,20.16-4.1h24.99c7.14,0,13.89,1.37,20.27,4.1,6.37,2.73,12,6.69,16.9,11.87,4.9-5.18,10.57-9.14,17.01-11.87,6.44-2.73,13.23-4.1,20.37-4.1h24.78c7.14,0,13.86,1.37,20.16,4.1,6.3,2.73,11.76,6.4,16.38,11.02s8.29,10.08,11.02,16.38c2.73,6.3,4.1,13.02,4.1,20.16v57.33h-28.77v-57.33c0-3.22-.6-6.19-1.79-8.92-1.19-2.73-2.83-5.14-4.94-7.24s-4.52-3.74-7.25-4.94c-2.73-1.19-5.71-1.79-8.92-1.79h-24.78c-3.08,0-6.02.6-8.82,1.79-2.8,1.19-5.25,2.83-7.35,4.94s-3.75,4.52-4.94,7.24c-1.19,2.73-1.78,5.71-1.78,8.92v57.33h-28.77v-57.33c0-3.22-.6-6.19-1.79-8.92-1.19-2.73-2.83-5.14-4.94-7.24s-4.52-3.74-7.25-4.94c-2.73-1.19-5.71-1.79-8.92-1.79h-24.99c-3.08,0-6.02.6-8.82,1.79-2.8,1.19-5.25,2.83-7.35,4.94-2.1,2.1-3.75,4.52-4.94,7.24-1.19,2.73-1.78,5.71-1.78,8.92v57.33h-28.77ZM489.32,38.01c7.14,0,13.86,1.37,20.16,4.1,6.3,2.73,11.76,6.4,16.38,11.02s8.29,10.08,11.02,16.38c2.73,6.3,4.1,13.02,4.1,20.16v5.67c0,7.14-1.37,13.86-4.1,20.16s-6.4,11.76-11.02,16.38-10.08,8.29-16.38,11.03c-6.3,2.73-13.02,4.09-20.16,4.09h-82.32V0h28.77v118.23h53.55c3.22,0,6.19-.59,8.93-1.79,2.73-1.19,5.11-2.83,7.14-4.94,2.03-2.1,3.68-4.55,4.94-7.35,1.26-2.8,1.89-5.74,1.89-8.82v-5.67c0-3.22-.63-6.19-1.89-8.92-1.26-2.73-2.91-5.14-4.94-7.24-2.03-2.1-4.41-3.74-7.14-4.94-2.73-1.19-5.71-1.79-8.93-1.79h-40.53v-28.77h40.53ZM671.2,38.01v28.77h-59.22c-3.08,0-6.02.6-8.82,1.79-2.8,1.19-5.25,2.83-7.35,4.94-2.1,2.1-3.75,4.52-4.94,7.24-1.19,2.73-1.78,5.71-1.78,8.92v57.33h-28.77v-57.33c0-7.14,1.36-13.86,4.09-20.16,2.73-6.3,6.41-11.76,11.03-16.38,4.62-4.62,10.08-8.29,16.38-11.02,6.3-2.73,13.02-4.1,20.16-4.1h59.22ZM764.73,38.01c7.14,0,13.86,1.37,20.16,4.1,6.3,2.73,11.76,6.4,16.38,11.02,4.62,4.62,8.29,10.08,11.02,16.38,2.73,6.3,4.09,13.02,4.09,20.16v5.67c0,7.14-1.36,13.86-4.09,20.16s-6.41,11.76-11.02,16.38c-4.62,4.62-10.08,8.29-16.38,11.03-6.3,2.73-13.02,4.09-20.16,4.09h-29.61c-7.14,0-13.86-1.37-20.16-4.09-6.3-2.73-11.76-6.41-16.38-11.03-4.62-4.62-8.3-10.08-11.03-16.38s-4.09-13.02-4.09-20.16v-5.67c0-7.14,1.36-13.86,4.09-20.16,2.73-6.3,6.41-11.76,11.03-16.38,4.62-4.62,10.08-8.29,16.38-11.02,6.3-2.73,13.02-4.1,20.16-4.1h29.61ZM787.62,89.67c0-3.22-.6-6.19-1.79-8.92-1.19-2.73-2.83-5.14-4.94-7.24s-4.52-3.74-7.25-4.94c-2.73-1.19-5.71-1.79-8.92-1.79h-29.61c-3.08,0-6.02.6-8.82,1.79-2.8,1.19-5.25,2.83-7.35,4.94-2.1,2.1-3.75,4.52-4.94,7.24-1.19,2.73-1.78,5.71-1.78,8.92v5.67c0,3.08.59,6.02,1.78,8.82,1.19,2.8,2.84,5.25,4.94,7.35,2.1,2.1,4.55,3.75,7.35,4.94,2.8,1.19,5.74,1.79,8.82,1.79h29.61c3.22,0,6.19-.59,8.92-1.79,2.73-1.19,5.15-2.83,7.25-4.94,2.1-2.1,3.74-4.55,4.94-7.35,1.19-2.8,1.79-5.74,1.79-8.82v-5.67ZM934.07,38.01c2.38,0,4.55.63,6.51,1.89,1.96,1.26,3.5,2.94,4.62,5.04,1.12,2.1,1.58,4.34,1.37,6.72-.21,2.38-1.02,4.55-2.42,6.51l-68.25,60.06h66.99v28.77h-101.64c-2.38,0-4.59-.63-6.61-1.89-2.03-1.26-3.61-2.94-4.73-5.04-1.12-2.1-1.58-4.34-1.37-6.72.21-2.38,1.08-4.55,2.62-6.51l68.25-60.06h-66.99v-28.77h101.64ZM980.73,32.97c-4.76,0-8.61-1.54-11.55-4.62-3.36-3.36-4.9-7.28-4.62-11.76-.28-4.48,1.26-8.4,4.62-11.76,2.94-3.22,6.79-4.83,11.55-4.83s8.75,1.58,11.97,4.73c3.22,3.15,4.83,7.11,4.83,11.86s-1.61,8.86-4.83,11.87c-3.22,3.01-7.21,4.52-11.97,4.52ZM966.66,147V38.01h28.77v108.99h-28.77ZM1146.86,98.91h-101.01c.84,5.6,3.39,10.22,7.67,13.86,4.27,3.64,9.2,5.46,14.81,5.46h72.87v28.77h-72.87c-7.14,0-13.86-1.37-20.16-4.09-6.3-2.73-11.76-6.41-16.38-11.03s-8.29-10.08-11.03-16.38c-2.73-6.3-4.09-13.02-4.09-20.16v-5.67c0-7.14,1.37-13.86,4.09-20.16,2.73-6.3,6.41-11.76,11.03-16.38s10.08-8.29,16.38-11.02,13.02-4.1,20.16-4.1h27.3c7.14,0,13.82,1.33,20.05,3.99,6.23,2.66,11.66,6.3,16.28,10.92s8.26,10.05,10.92,16.27c2.66,6.23,3.99,12.85,3.99,19.84v9.87ZM1118.09,85.89c-.84-3.5-2.24-6.72-4.2-9.66-1.68-2.38-4.06-4.55-7.14-6.51-3.08-1.96-7.21-2.94-12.39-2.94h-26.04c-5.6,0-10.54,1.82-14.81,5.46-4.27,3.64-6.82,8.19-7.67,13.65h72.24ZM1151.46,38.01h32.34l35.49,76.65,16.8-36.12-19.11-40.53h32.34l35.49,76.65,35.7-76.65h32.34l-47.25,99.54c-1.96,3.92-4.76,7-8.4,9.24-3.64,2.24-7.63,3.36-11.97,3.36s-8.65-1.16-12.5-3.47c-3.85-2.31-6.82-5.49-8.92-9.55l-11.76-24.78-11.97,25.2c-1.96,3.92-4.76,7-8.4,9.24-3.64,2.24-7.63,3.36-11.97,3.36s-8.65-1.16-12.5-3.47c-3.85-2.31-6.83-5.49-8.92-9.55l-46.83-99.12ZM1382.79,32.97c-4.76,0-8.61-1.54-11.55-4.62-3.36-3.36-4.9-7.28-4.62-11.76-.28-4.48,1.26-8.4,4.62-11.76,2.94-3.22,6.79-4.83,11.55-4.83s8.75,1.58,11.97,4.73c3.22,3.15,4.83,7.11,4.83,11.86s-1.61,8.86-4.83,11.87c-3.22,3.01-7.21,4.52-11.97,4.52ZM1368.72,147V38.01h28.77v108.99h-28.77ZM1418.72,89.67c0-7.14,1.37-13.82,4.09-20.05,2.73-6.23,6.44-11.69,11.13-16.38,4.69-4.69,10.15-8.36,16.38-11.02,6.23-2.66,12.92-3.99,20.06-3.99h76.65v28.77h-76.65c-3.08,0-6.02.6-8.82,1.78-2.8,1.19-5.25,2.83-7.35,4.94-2.1,2.1-3.75,4.52-4.94,7.24-1.19,2.73-1.79,5.71-1.79,8.92v5.46c0,3.08.59,6.02,1.79,8.82,1.19,2.8,2.83,5.25,4.94,7.35,2.1,2.1,4.55,3.75,7.35,4.94,2.8,1.19,5.74,1.79,8.82,1.79h76.65v28.77h-76.65c-7.14,0-13.83-1.37-20.06-4.09-6.23-2.73-11.69-6.41-16.38-11.03-4.69-4.62-8.4-10.04-11.13-16.27-2.73-6.23-4.09-12.92-4.09-20.06v-5.88ZM1669.4,38.01c2.38,0,4.55.63,6.51,1.89,1.96,1.26,3.5,2.94,4.62,5.04,1.12,2.1,1.58,4.34,1.37,6.72-.21,2.38-1.02,4.55-2.42,6.51l-68.25,60.06h66.99v28.77h-101.64c-2.38,0-4.59-.63-6.62-1.89-2.03-1.26-3.61-2.94-4.72-5.04-1.12-2.1-1.58-4.34-1.37-6.72.21-2.38,1.08-4.55,2.62-6.51l68.25-60.06h-66.99v-28.77h101.64Z" />
+            </svg>
+            <canvas id="glow-canvas"></canvas>
+        </div>
+        <div id="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-arrow">&#8595;</div>
+        </div>
+    </section>
+
+    <!-- ═══════════ O MNIE ═══════════ -->
+    <section id="about" class="content-section reveal">
+        <div class="section-inner">
+            <h2 class="section-title mono">// O mnie</h2>
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">about.sh</span>
+                </div>
+                <div class="terminal-body">
+                    <p class="terminal-prompt">$ cat about.txt</p>
+                    <p id="typing-text" class="terminal-output"></p>
+                    <span id="terminal-cursor">_</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ PROJEKTY ═══════════ -->
+    <section id="projects" class="content-section reveal">
+        <div class="section-inner">
+            <h2 class="section-title mono">// Projekty</h2>
+            <div class="projects-grid">
+
+                <div class="project-card">
+                    <div class="card-scanline"></div>
+                    <div class="card-content">
+                        <h3 class="mono">System wizyjny kontroli jakości</h3>
+                        <p>Praca inżynierska — samodzielne zaprojektowanie i budowa stanowiska z przenośnikiem taśmowym i zintegrowanym systemem wizyjnym. Hybrydowy algorytm detekcji wad łączący klasyczne metody z sieciami neuronowymi. Dokładność ponad 97%. Projekt opisany w Gazecie Krakowskiej i Dzienniku Polskim.</p>
+                        <div class="card-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">YOLOv8</span>
+                            <span class="tag">OpenCV</span>
+                            <span class="tag">Arduino</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-scanline"></div>
+                    <div class="card-content">
+                        <h3 class="mono">Robot mobilny z wysuwanym mostem</h3>
+                        <p>Konstrukcja robota zdolnego do pokonywania przeszkód za pomocą wysuwanego mostu. Osobiste wykonanie algorytmu sterowania — ocena 100/100 za część programistyczną.</p>
+                        <div class="card-tags">
+                            <span class="tag">C++</span>
+                            <span class="tag">Arduino</span>
+                            <span class="tag">Robotyka</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-scanline"></div>
+                    <div class="card-content">
+                        <h3 class="mono">Portfolio — oscyloskop</h3>
+                        <p>Ta strona — animowane logo w stylu oscyloskopu z interaktywnym efektem falowania i zygzaku przy ruchu myszki. Scroll-driven logo transition do nawigacji.</p>
+                        <div class="card-tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Canvas</span>
+                            <span class="tag">SVG</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ UMIEJĘTNOŚCI ═══════════ -->
+    <section id="skills" class="content-section reveal">
+        <div class="section-inner">
+            <h2 class="section-title mono">// Umiejętności</h2>
+            <div class="skills-grid">
+                <div class="skill-item"><span class="skill-icon">&#9670;</span> Python</div>
+                <div class="skill-item"><span class="skill-icon">&#9670;</span> C++ / C</div>
+                <div class="skill-item"><span class="skill-icon">&#9670;</span> C#</div>
+                <div class="skill-item"><span class="skill-icon">&#9670;</span> PyTorch</div>
+                <div class="skill-item"><span class="skill-icon">&#9670;</span> YOLO</div>
+                <div class="skill-item"><span class="skill-icon">&#9670;</span> OpenCV</div>
+                <div class="skill-item"><span class="skill-icon">&#9670;</span> Arduino / FPGA</div>
+                <div class="skill-item"><span class="skill-icon">&#9670;</span> MatLab / Simulink</div>
+                <div class="skill-item"><span class="skill-icon">&#9670;</span> SolidWorks</div>
+                <div class="skill-item"><span class="skill-icon">&#9670;</span> AutoCAD / Inventor</div>
+                <div class="skill-item"><span class="skill-icon">&#9670;</span> Siemens NX / Nastran</div>
+                <div class="skill-item"><span class="skill-icon">&#9670;</span> Omron / Mitsubishi</div>
+                <div class="skill-item"><span class="skill-icon">&#9670;</span> RobotStudio</div>
+                <div class="skill-item"><span class="skill-icon">&#9670;</span> G-Code / CNC</div>
+                <div class="skill-item"><span class="skill-icon">&#9670;</span> HTML / CSS / JS</div>
+                <div class="skill-item"><span class="skill-icon">&#9670;</span> LaTeX</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ DOŚWIADCZENIE ═══════════ -->
+    <section id="experience" class="content-section reveal">
+        <div class="section-inner">
+            <h2 class="section-title mono">// Doświadczenie</h2>
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date mono">Luty 2026 — obecnie</span>
+                        <h3>Studia magisterskie — AGH Kraków</h3>
+                        <p>Inżynieria mechatroniczna, specjalizacja: Projektowanie Mechatroniczne - Informatyka. Wydział Inżynierii Mechanicznej i Robotyki.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date mono">Czerwiec 2025 — obecnie</span>
+                        <h3>Process Innovation Intern — Aptiv (Versigent)</h3>
+                        <p>Implementacja systemów wizji komputerowej (Python, PyTorch, YOLO). Współtwórca rozwiązania chronionego jako Trade Secret. Projektowanie systemów wbudowanych (Arduino) z układami mechanicznymi. Inżynieria wsteczna aplikacji C# dla BricsCAD. Tworzenie aplikacji Python używanych w produkcji wiązek elektrycznych.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date mono">Październik 2022 — Luty 2026</span>
+                        <h3>Studia inżynierskie — AGH Kraków</h3>
+                        <p>Inżynieria mechatroniczna, tytuł: Inżynier. Wydział Inżynierii Mechanicznej i Robotyki. Praca inżynierska wyróżniona — system wizyjny kontroli jakości opisany w prasie.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date mono">Maj 2022 — Sierpień 2022</span>
+                        <h3>Kontroler jakości — Superior Industries</h3>
+                        <p>Kontrola wyrobów pod kątem uszkodzeń mechanicznych. Praca zespołowa na hali produkcyjnej.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ KONTAKT ═══════════ -->
+    <section id="contact" class="content-section reveal">
+        <div class="section-inner">
+            <h2 class="section-title mono">// Kontakt</h2>
+            <p class="contact-subtitle">Chętnie porozmawiam o współpracy lub nowych projektach.</p>
+            <div class="contact-links">
+                <a href="mailto:ambroziewiczdaniel@gmail.com" class="contact-link">
+                    <span class="contact-icon">&#9993;</span>
+                    <span>ambroziewiczdaniel@gmail.com</span>
+                </a>
+                <a href="tel:+48512337500" class="contact-link">
+                    <span class="contact-icon">&#9742;</span>
+                    <span>512 337 500</span>
+                </a>
+                <a href="https://www.linkedin.com/in/daniel-ambroziewicz-9343a414a/" target="_blank" class="contact-link">
+                    <span class="contact-icon">&#9830;</span>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <p class="mono">&copy; 2026 Daniel Ambroziewicz. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
