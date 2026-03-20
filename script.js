@@ -17,8 +17,15 @@ document.addEventListener("DOMContentLoaded", () => {
     let scaleX, scaleY;
 
     function resize() {
-        svgRect = svgEl.getBoundingClientRect();
-        const dpr = window.devicePixelRatio || 1;
+        // Calculate untransformed SVG dimensions from CSS rules to avoid
+        // feedback loop with CSS transform scale during resize
+        const vw = window.innerWidth;
+        const containerW = Math.min(vw <= 768 ? vw * 0.95 : vw * 0.9, 1400);
+        const aspectRatio = vbHeight / vbWidth;
+        svgRect = { width: containerW, height: containerW * aspectRatio };
+
+        // Use 3× DPR so logo stays sharp when CSS scales it down
+        const dpr = (window.devicePixelRatio || 1) * 3;
         canvas.width = (svgRect.width + canvasPad * 2) * dpr;
         canvas.height = (svgRect.height + canvasPad * 2) * dpr;
         ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -28,7 +35,10 @@ document.addEventListener("DOMContentLoaded", () => {
         scaleY = svgRect.height / vbHeight;
     }
 
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', () => {
+        resize();
+        trail.length = 0; // Clear old trail drawn at previous dimensions
+    });
     resize();
 
     // ── Ustawienia wizualne ──
@@ -141,7 +151,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // Rysujemy segmenty jako ciągłe polilinie, przerywając na granicach liter
         const bandSize = 10;
         ctx.strokeStyle = tailColor;
-        ctx.lineWidth = lineThickness;
+        // Partial compensation for CSS scale — sqrt keeps lines visible but not fat
+        const currentScale = 1 - scrollProgress * (1 - getTargetScale());
+        ctx.lineWidth = lineThickness / Math.sqrt(Math.max(currentScale, 0.05));
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
 
@@ -187,7 +199,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const hero = document.getElementById("hero");
     const animContainer = document.getElementById("animation-container");
 
-    const targetScale = 0.14;
+    // Dynamic targetScale: desired final logo width in px
+    // On desktop: ~200px, on mobile: ~50% of viewport width
+    function getTargetScale() {
+        const vw = window.innerWidth;
+        const elemW = animContainer.offsetWidth;
+        const desiredWidth = vw <= 768 ? vw * 0.5 : 200;
+        return Math.min(desiredWidth / elemW, 0.5);
+    }
 
     function lerp(a, b, t) {
         return a + (b - a) * t;
@@ -216,11 +235,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Koniec: lewy górny róg, wycentrowane pionowo w navbar (60px)
         const navH = 60;
-        const scaledH = elemH * targetScale;
-        const endX = 40;
+        const ts = getTargetScale();
+        const scaledH = elemH * ts;
+        const endX = vw <= 768 ? 16 : 40;
         const endY = (navH - scaledH) / 2;
 
-        const s = lerp(1, targetScale, t);
+        const s = lerp(1, ts, t);
         const tx = lerp(startX, endX, t);
         const ty = lerp(startY, endY, t);
 
@@ -304,10 +324,30 @@ document.addEventListener("DOMContentLoaded", () => {
         cursorEl.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
     });
 
-    // Smooth scroll for nav links
+    // ═══════════ HAMBURGER MENU ═══════════
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('open');
+        navLinks.classList.toggle('open');
+        const isOpen = navLinks.classList.contains('open');
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+        // Hide logo animation behind menu overlay
+        animContainer.style.visibility = isOpen ? 'hidden' : 'visible';
+    });
+
+    // Smooth scroll for nav links + close mobile menu
     document.querySelectorAll('#nav-links a').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
+            // Close mobile menu
+            menuToggle.classList.remove('open');
+            navLinks.classList.remove('open');
+            document.body.style.overflow = '';
+            animContainer.style.visibility = 'visible';
+
             const target = document.querySelector(link.getAttribute('href'));
             if (target) {
                 target.scrollIntoView({ behavior: 'smooth' });

@@ -402,6 +402,48 @@ a:hover { color: var(--accent-bright); }
     letter-spacing: 0.5px;
 }
 
+/* ── Media links inside project cards ── */
+
+.card-media {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid #3a3a3a;
+}
+
+.card-media-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.card-media-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.media-link {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 5px 12px;
+    background: rgba(211, 211, 211, 0.06);
+    border: 1px solid #3a3a3a;
+    border-radius: 20px;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+    transition: border-color 0.3s, color 0.3s, background 0.3s;
+    cursor: none;
+}
+
+.media-link:hover {
+    border-color: var(--accent);
+    color: var(--accent-bright);
+    background: rgba(211, 211, 211, 0.12);
+}
+
 /* ═══════════════════════════════════════════
    SKILLS
    ═══════════════════════════════════════════ */
@@ -437,65 +479,160 @@ a:hover { color: var(--accent-bright); }
 }
 
 /* ═══════════════════════════════════════════
-   TIMELINE
+   CAREER TREE
    ═══════════════════════════════════════════ */
 
-.timeline {
-    position: relative;
-    padding-left: 40px;
+.tree-header {
+    display: flex;
+    justify-content: space-between;
+    max-width: 800px;
+    margin: 0 auto 24px;
+    padding: 0 60px;
 }
 
-.timeline::before {
+.tree-label {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+}
+
+.career-tree {
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr;
+    gap: 0;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* ── Trunk (center column) ── */
+
+.tree-trunk {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Vertical line through trunk */
+.tree-trunk::before {
     content: '';
     position: absolute;
-    left: 7px;
     top: 0;
     bottom: 0;
+    left: 50%;
     width: 1px;
     background: #3a3a3a;
+    transform: translateX(-50%);
 }
 
-.timeline-item {
-    position: relative;
-    margin-bottom: 48px;
-}
+/* ── Nodes on trunk ── */
 
-.timeline-item:last-child {
-    margin-bottom: 0;
-}
-
-.timeline-dot {
-    position: absolute;
-    left: -40px;
-    top: 6px;
-    width: 15px;
-    height: 15px;
+.tree-node {
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     background: var(--bg);
     border: 2px solid var(--accent);
-    z-index: 1;
+    z-index: 2;
+    position: relative;
 }
 
-.timeline-content {
-    padding-bottom: 8px;
+.tree-node.active {
+    border-color: #5be05b;
+    box-shadow: 0 0 8px rgba(91, 224, 91, 0.4);
+    animation: pulse-node 2s infinite;
 }
 
-.timeline-date {
-    font-size: 12px;
+@keyframes pulse-node {
+    0%, 100% { box-shadow: 0 0 8px rgba(91, 224, 91, 0.4); }
+    50% { box-shadow: 0 0 16px rgba(91, 224, 91, 0.7); }
+}
+
+/* ── Root node ── */
+
+.tree-root {
+    font-size: 18px;
+    color: var(--accent);
+    z-index: 2;
+    position: relative;
+    line-height: 1;
+}
+
+/* ── Branches (left & right columns) ── */
+
+.tree-branch {
+    padding: 16px 0;
+    position: relative;
+}
+
+.tree-branch.empty {
+    min-height: 40px;
+}
+
+/* Connector line from card to trunk */
+.tree-branch.left:not(.empty)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -1px;
+    width: 20px;
+    height: 1px;
+    background: #3a3a3a;
+}
+
+.tree-branch.right:not(.empty)::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -1px;
+    width: 20px;
+    height: 1px;
+    background: #3a3a3a;
+}
+
+/* ── Tree cards ── */
+
+.tree-card {
+    background: var(--bg-card);
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: none;
+}
+
+.tree-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* Align cards to their trunk side */
+.tree-branch.left {
+    padding-right: 20px;
+}
+
+.tree-branch.right {
+    padding-left: 20px;
+}
+
+.tree-date {
+    font-size: 11px;
     color: var(--text-dim);
     letter-spacing: 1.5px;
     text-transform: uppercase;
 }
 
-.timeline-content h3 {
-    font-size: 18px;
+.tree-card h3 {
+    font-size: 16px;
     margin: 8px 0;
     color: var(--accent-bright);
     font-weight: 500;
 }
 
-.timeline-content p {
-    font-size: 14px;
+.tree-card p {
+    font-size: 13px;
     color: var(--text-dim);
     line-height: 1.6;
 }
@@ -552,41 +689,243 @@ a:hover { color: var(--accent-bright); }
 }
 
 /* ═══════════════════════════════════════════
+   HAMBURGER BUTTON
+   ═══════════════════════════════════════════ */
+
+#menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1100;
+    flex-direction: column;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+}
+
+#menu-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+    transform-origin: center;
+}
+
+#menu-toggle.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+#menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+#menu-toggle.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ═══════════════════════════════════════════
+   OVERFLOW FIX
+   ═══════════════════════════════════════════ */
+
+html {
+    overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════ */
 
 @media (max-width: 768px) {
-    #navbar {
-        padding: 0 20px;
+
+    /* ── Hamburger visible ── */
+    #menu-toggle {
+        display: flex;
     }
 
+    /* ── Mobile nav overlay ── */
     #nav-links {
-        gap: 16px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        background: rgba(34, 34, 34, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+        z-index: 1050;
+    }
+
+    #nav-links.open {
+        transform: translateX(0);
     }
 
     #nav-links li a {
-        font-size: 11px;
-        letter-spacing: 1px;
+        font-size: 18px;
+        letter-spacing: 2px;
     }
 
+    /* ── Navbar ── */
+    #navbar {
+        padding: 0 16px;
+    }
+
+    /* ── Hero ── */
+    #animation-container {
+        width: 95vw;
+    }
+
+    /* ── Sections ── */
     .content-section {
-        padding: 80px 20px;
+        padding: 60px 16px;
     }
 
     .section-title {
-        font-size: 22px;
+        font-size: 20px;
+        margin-bottom: 32px;
     }
 
-    #animation-container.shrunk {
-        transform: scale(0.1) translate(-400%, -350%);
+    /* ── Projects grid → 1col ── */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
 
-    /* Hide custom cursor on touch devices */
+    .card-content {
+        padding: 20px;
+    }
+
+    .card-content h3 {
+        font-size: 16px;
+    }
+
+    .card-content p {
+        font-size: 13px;
+    }
+
+    /* ── Skills grid → 2col ── */
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .skill-item {
+        font-size: 12px;
+        padding: 12px 14px;
+        gap: 6px;
+    }
+
+    /* ── Career tree → single column ── */
+    .tree-header {
+        display: none;
+    }
+
+    .career-tree {
+        grid-template-columns: 20px 1fr;
+        max-width: 100%;
+    }
+
+    .tree-branch.left,
+    .tree-branch.right {
+        grid-column: 2;
+        padding-left: 16px;
+        padding-right: 0;
+    }
+
+    .tree-branch.empty {
+        display: none;
+    }
+
+    .tree-trunk {
+        grid-column: 1;
+    }
+
+    /* Hide horizontal connectors on mobile */
+    .tree-branch.left:not(.empty)::after,
+    .tree-branch.right:not(.empty)::before {
+        display: none;
+    }
+
+    /* Left border connector on mobile */
+    .tree-branch:not(.empty)::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -1px;
+        width: 16px;
+        height: 1px;
+        background: #3a3a3a;
+        display: block;
+    }
+
+    .tree-card h3 {
+        font-size: 14px;
+    }
+
+    .tree-card p {
+        font-size: 12px;
+    }
+
+    .tree-card {
+        padding: 16px;
+    }
+
+    /* ── Contact → column ── */
+    .contact-links {
+        flex-direction: column;
+    }
+
+    .contact-link {
+        padding: 14px 20px;
+        font-size: 13px;
+        width: 100%;
+    }
+
+    /* ── Terminal ── */
+    .terminal-body {
+        padding: 16px;
+        font-size: 12px;
+        min-height: 120px;
+    }
+
+    /* ── Footer ── */
+    #footer {
+        padding: 24px 16px;
+        font-size: 11px;
+    }
+
+    /* ── Hide custom cursor on touch devices ── */
     #custom-cursor {
         display: none;
     }
 
     body {
         cursor: auto;
+    }
+}
+
+/* ── Extra small screens ── */
+@media (max-width: 400px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    #nav-links li a {
+        font-size: 16px;
     }
 }
